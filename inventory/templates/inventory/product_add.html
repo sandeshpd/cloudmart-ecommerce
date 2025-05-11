@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/product_add.css' %}">
+    <title>Inventory Management</title>
+</head>
+<body>
+    {% block content %}
+    <!-- TODO: Add conditional rendering to Show form only to authenticated users and
+    design the page nicely. -->
+    <div class="product-container">
+        <div class="product-box">
+            <h2 class="text-center">Add Products</h2>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="message text-danger">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <div>
+                        {{ form.name.label_tag }}
+                        {{ form.name }}
+                    </div>
+                    <div>
+                        {{ form.description.label_tag }}
+                        {{ form.description }}
+                    </div>
+                    <div>
+                        {{ form.slug.label_tag }}
+                        {{ form.slug }}
+                    </div>
+                    <div>
+                        {{ form.category.label_tag }}
+                        {{ form.category }}
+                    </div>
+                    <div>
+                        {{ form.price.label_tag }}
+                        {{ form.price }}
+                    </div>
+                    <div>
+                        {{ form.stock.label_tag }}
+                        {{ form.stock }}
+                    </div>
+                    <div>
+                        {{ form.image.label_tag }}
+                        {{ form.image }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
