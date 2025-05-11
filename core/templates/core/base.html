@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="{% static 'js/dropdown.js' %}" defer></script>
+    <script src="{% static 'js/alert.js' %}" defer></script>
+    <title>CloudMart</title>
+</head>
+<body class="{% block body_class %} base-body {% endblock %}">
+    <!-- Alert for inforimg user he/she is logged in -->
+    {% if messages %}
+    <div id="message-container" class="message-container">
+        {% for message in messages %}
+        <div class="alert alert-dismissible fade show alert-top-right 
+            {% if message.tags == 'success' %}alert-success{% elif message.tags == 'warning' %}alert-warning{% endif %}" 
+            role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <!-- Alert ends -->
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <button class="dropdown-btn">
+                    Categories <span class="arrow-down"><i class="bi bi-caret-down-fill"></i></span>
+                </button>
+                <ul class="dropdown-menu">
+                    {% for category in categories %}
+                    <li>
+                        <a href="{% url 'products:products_by_category' category.id %}" class="nav_link">
+                            {{ category.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                    <li>
+                        <a href="{% url 'products:product_list' %}" class="nav_link">All Products</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-center">
+                <h1 class="brand">
+                    <a href="#" class="brand_nav_link">
+                        CloudMart
+                    </a>
+                </h1>
+            </div>
+            <div class="navbar-right">
+                {% if user.is_authenticated %}
+                <div class="profile-container">
+                    <div class="profile-dropdown">
+                        <i class="bi bi-person-circle"></i>
+                        <ul class="profile-menu">
+                            <li>
+                                <a href="{% url 'users:profile' %}">View Profile</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'users:logout' %}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% else %}
+                <button class="user-action-btn">
+                    <a href="{% url 'users:login' %}" class="nav_link">Login</a>
+                </button>
+                <button class="user-action-btn">
+                    <a href="{% url 'users:register' %}" class="nav_link">Register</a>
+                </button>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Bottom navbar for responsive screen -->
+    <footer class="bottom-navbar">
+        <a href="#home" class="nav-icon">
+            <i class="bi bi-house-door">
+                <span>Home</span>
+            </i>
+        </a>
+        <a href="#profile" class="nav-icon">
+            <i class="bi bi-person">
+                <span>Profile</span>
+            </i>
+        </a>
+        <a href="#cart" class="nav-icon">
+            <i class="bi bi-cart">
+                <span>Cart</span>
+            </i>
+        </a>
+        <a href="#login-register" class="nav-icon">
+            <i class="bi bi-list">
+                <span>Menu</span>
+            </i>
+        </a>
+    </footer>
+</body>
+</html>
+</head>
