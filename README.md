@@ -7,11 +7,11 @@ CloudMart is a feature-rich e-commerce platform built using Django, PostgreSQL, 
 ### Implemented
 - User authentication and authorization
 - Product catalog with categories
+- Search functionality
 - Responsive design for mobile and desktop
 - Admin dashboard for managing products, orders, and users
 
 ### In Development
-- Search functionality
 - Shopping cart and checkout system
 - Order management for users and admins
 
