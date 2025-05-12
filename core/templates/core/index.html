@@ -35,13 +35,17 @@
     </div>
 
     <div class="searchBox">
-        <input
-            class="form-control"
-            type="text"
-            name="productSearch"
-            id="productSearch"
-            placeholder="Enter product to search..."
-        >
+        <form action="{% url 'products:search' %}" method="get">
+            <input
+                class="form-control"
+                type="text"
+                name="q"
+                id="productSearch"
+                placeholder="Enter product to search..."
+                value="{{ request.GET.q|default:'' }}"
+            >
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
     </div>
 </div>
 {% endblock %}
