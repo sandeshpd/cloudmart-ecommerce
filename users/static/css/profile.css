@@ -1,0 +1,109 @@
+:root {
+    --active-background-color: #546ae6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: #d9d9d9;
+}
+
+.row {
+    height: 100%;
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+/* Sidebar styling start */
+.sidebar-section {
+    background-color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #aaa;
+}
+
+.sidebar-options {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2.9rem;
+}
+
+.option {
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.option-link {
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+    width: inherit;
+    border-radius: 8px;
+    transition-duration: 200ms;
+}
+
+.option-link:hover {
+    background-color: var(--active-background-color);
+    color: #fff;
+}
+
+.option-link.active {
+    background-color: var(--active-background-color);
+    color: #fff;
+}
+
+/* Sidebar styling ends */
+
+/* Other sections styling starts */
+.content-section > div {
+    display: none;
+}
+
+.content-section > .active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Profile section styling starts */
+.profile-section .active {
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* Profile section ends  */
+/* Order section starts */
+.order-section .active {
+    display: flex;
+}
+/* Order section ends */
+/* Address section starts */
+
+/* Address section ends */
+/* Cart section starts */
+
+/* Cart section ends */
+
+/* Other sections styling ends */
