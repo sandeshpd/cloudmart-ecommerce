@@ -22,7 +22,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
 }
 
 h2 {

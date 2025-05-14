@@ -9,8 +9,7 @@
     <title>Products List</title>
 </head>
 <body>
-    <!-- TODO: Make this page nice and interactive. Products available in inventory 
-     will be shown here. Add logic to show Products. -->
+    <!-- TODO: Add "Back to Home" link/button. -->
     <div class="container text-center mt-5">
         {% if products %}
         <div class="row justify-content-center">
@@ -20,7 +19,6 @@
                     <h2 class="product-name">{{ product.name }}</h2>
                     <p class="product-price">{{ product.price }}</p>
                     <p class="product-stock">In stock: {{ product.stock }}</p>
-                    <!-- TODO: Add link that'd redirect user to product details page. -->
                     <a href="{% url 'products:detail' product.id %}" class="btn btn-primary">
                         View details
                     </a>
